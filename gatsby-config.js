@@ -5,6 +5,30 @@ module.exports = {
     author: `@gatsbyjs`,
   },
   plugins: [
+    {
+      resolve: "gatsby-firesource",
+      options: {
+        credential: require("./firebase.json"),
+        types: [
+          {
+            type: "Truck",
+            collection: "truckreg",
+            map: doc => ({
+              odometer: doc.odometer,
+              condition: doc.condition,
+              truckreg___NODE: doc.truckreg.id,
+            }),
+          },
+          {
+            type: "Truckreg",
+            collection: "reading",
+            map: doc => ({
+              registration: doc.registration,
+            }),
+          },
+        ],
+      },
+    },
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-image`,
     {
