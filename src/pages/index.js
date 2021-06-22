@@ -24,7 +24,7 @@ const IndexPage = props => {
   )
 }
 
-export const quert = graphql`
+export const query = graphql`
   {
     allTruck {
       edges {
