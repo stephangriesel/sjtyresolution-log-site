@@ -12,18 +12,18 @@ module.exports = {
         types: [
           {
             type: "Truck",
-            collection: "truckreg",
+            collection: "trucks",
             map: doc => ({
-              odometer: doc.odometer,
+              registration: doc.registration,
               condition: doc.condition,
-              truckreg___NODE: doc.truckreg.id,
+              driver___NODE: doc.driver.id,
             }),
           },
           {
-            type: "Truckreg",
-            collection: "reading",
+            type: "Driver",
+            collection: "drivers",
             map: doc => ({
-              registration: doc.registration,
+              name: doc.name,
             }),
           },
         ],
