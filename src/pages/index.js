@@ -10,6 +10,16 @@ const IndexPage = props => {
   return (
     <Layout>
       <Seo title="Home" />
+      {props.data.allTruck.edges.map(edge => (
+        <div key={edge.node.id}>
+          <h2>
+            {edge.node.registration} - {edge.node.driver.name}
+          </h2>
+          <div>
+            <h2>{edge.node.condition}</h2>
+          </div>
+        </div>
+      ))}
     </Layout>
   )
 }
