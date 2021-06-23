@@ -18,6 +18,7 @@ const IndexPage = props => {
             {edge.node.registration} - {edge.node.driver.name}
           </h2>
           <h2>{edge.node.condition}</h2>
+          <Link to={`/truck/${edge.node.id}`}>Comments</Link>
         </Item>
       ))}
     </Layout>

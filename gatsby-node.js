@@ -1,5 +1,8 @@
+const path = require('path')
+
 exports.createPages = ({graphql,actions}) => {
     const {createPage} = actions;
+    const truckTemplate = path.resolve('src/templates/truckTemplate.js')
     return graphql(`
     {
         allTruck {
@@ -23,7 +26,7 @@ exports.createPages = ({graphql,actions}) => {
         result.data.allTruck.edges.forEach(truck => {
             createPage({
                 path:`/truck/${truck.node.id}`,
-                component:null,
+                component:truckTemplate,
                 context:truck.node
             })
         })
