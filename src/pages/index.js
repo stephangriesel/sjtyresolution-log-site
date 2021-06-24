@@ -5,7 +5,7 @@ import { StaticImage } from "gatsby-plugin-image"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 
-import styled from "styled-components"
+import TruckItem from '../components/TruckItem'
 
 const IndexPage = props => {
   console.log("test data", props)
@@ -13,13 +13,13 @@ const IndexPage = props => {
     <Layout>
       <Seo title="Home" />
       {props.data.allTruck.edges.map(edge => (
-        <Item key={edge.node.id}>
+        <TruckItem key={edge.node.id}>
           <h2>
             {edge.node.registration} - {edge.node.driver.name}
           </h2>
           <h2>{edge.node.condition}</h2>
           <Link to={`/truck/${edge.node.id}`}>Comments</Link>
-        </Item>
+        </TruckItem>
       ))}
     </Layout>
   )
@@ -40,10 +40,6 @@ export const query = graphql`
       }
     }
   }
-`
-
-const Item = styled.nav`
-  display:flex;
 `
 
 export default IndexPage
