@@ -1,10 +1,12 @@
 import React from 'react'
+import Layout from "../components/layout"
 
-const truckTemplate = () => {
+const truckTemplate = (props) => {
+    console.log("test truck template props",props)
     return (
-        <div>
+        <Layout>
             Truck 
-        </div>
+        </Layout>
     )
 }
 
