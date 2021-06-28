@@ -7,10 +7,12 @@ const truckTemplate = (props) => {
     console.log("test truck template props",props)
     return (
         <Layout>
-            <TruckItem>
-                <h2>{props.pageContext.registration} - {props.pageContext.driver.name}</h2>
-                <span>{props.pageContext.condition}</span>
-            </TruckItem>
+            <TruckItem
+            driverName={props.pageContext.driver.name}
+            truckRegistration={props.pageContext.registration}
+            tyreCondition={props.pageContext.condition}
+            />
+
         </Layout>
     )
 }

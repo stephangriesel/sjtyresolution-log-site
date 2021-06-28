@@ -20,14 +20,14 @@ const Header = ({ siteTitle }) => (
       }}
     >
       <div>
-        <img 
+        <a href="/"><img 
         src={logo} 
         style={{
           height:`5em`, 
           margin: `0 auto`
         }} 
         alt="logo" 
-        /></div>
+        /></a></div>
       <h1 style={{ margin: 0 }}>
         <Link
           to="/"

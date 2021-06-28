@@ -19,11 +19,20 @@ body {
   -webkit-font-feature-settings: "kern", "liga", "clig", "calt";
   font-feature-settings: "kern", "liga", "clig", "calt";
 }
+a {
+  color:#000;
+}
 .logo {
   display:flex;
   align-items: center;
   justify-content: space-evenly;
   /* box-shadow: 0 8px 6px -6px black; */
+}
+.btn {
+  background:#476ECC;
+  border-radius: 5px;
+  color:#FFF;
+  padding:0.2em;
 }
 article,
 aside,
