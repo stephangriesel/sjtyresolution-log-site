@@ -18,7 +18,7 @@ const IndexPage = props => {
         truckRegistration={edge.node.registration}
         tyreCondition={edge.node.condition}
         key={edge.node.id}>
-          <Link to={`/truck/${edge.node.id}`}>Details</Link>
+        <Link to={`/truck/${edge.node.id}`}>Details</Link>
         </TruckItem>
       ))}
     </Layout>
@@ -30,6 +30,7 @@ export const query = graphql`
     allTruck {
       edges {
         node {
+          brand
           condition
           registration
           id

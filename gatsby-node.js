@@ -8,8 +8,24 @@ exports.createPages = ({graphql,actions}) => {
         allTruck {
           edges {
             node {
+              brand
+              comments
               condition
+              date
+              datesignoff
+              driversignoff
+              endtime
+              odo
+              pressure
               registration
+              replacement
+              starttime
+              techniciansignoff
+              thread
+              threadpattern
+              torquewheelnuts
+              trackingno
+              tyremovementinorder
               id
               driver {
                 name

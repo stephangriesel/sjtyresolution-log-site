@@ -1,11 +1,12 @@
 import React from 'react'
 import styled from "styled-components"
 
-const TruckItem = ({driverName, truckRegistration, tyreCondition, children}) => {
+const TruckItem = ({brand, driverName, truckRegistration, tyreCondition, children}) => {
     return (
         <TruckItemWrapper>
-            <h2>{truckRegistration} - {driverName}</h2>
+            <h2>{truckRegistration}</h2>
             <span>{tyreCondition}</span>
+            {/* <span>{brand}</span> */}
             <div className="btn">
                 {children}
             </div>
@@ -26,13 +27,22 @@ const TruckItemWrapper = styled.section `
         padding:0;
     }
     .btn {
+        padding:0.5em;
+        background:transparent;
+        transition: ease-in 0.5s;
+        border: 1px solid #000;
         a {
-            color:#FFF;
+            background:transparent;
+            color:#000;
             font-family:arial;
             text-decoration:none;
+            padding:0.5em;
+            &:hover {
+                color:#fff;
+            }
         }
         &:hover {
-            background:#2A427A;
+            background:#312d6f;
         }
     }
 `
