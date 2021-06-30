@@ -27,6 +27,9 @@ exports.createPages = ({graphql,actions}) => {
               trackingno
               tyremovementinorder
               id
+              localImage {
+                publicURL
+              }
               driver {
                 name
               }

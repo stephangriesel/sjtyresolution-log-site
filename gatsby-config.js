@@ -21,6 +21,7 @@ module.exports = {
               datesignoff:doc.datesignoff,
               driversignoff:doc.driversignoff,
               endtime:doc.endtime,
+              imageUrl:doc.imageUrl,
               odo:doc.odo,
               pressure:doc.pressure,
               registration: doc.registration,
@@ -66,6 +67,13 @@ module.exports = {
         theme_color: `#663399`,
         display: `minimal-ui`,
         icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
+      },
+    },
+    {
+      resolve: `gatsby-plugin-remote-images`,
+      options: {
+        nodeType: 'Truck',
+        imagePath: 'imageUrl',
       },
     },
     `gatsby-plugin-gatsby-cloud`,

@@ -8,12 +8,12 @@ const truckTemplate = (props) => {
     return (
         <Layout>
             <TruckItem
-            brand={props.pageContext.brand}
-            driverName={props.pageContext.driver.name}
-            truckRegistration={props.pageContext.registration}
-            tyreCondition={props.pageContext.condition}
+                truckImage={props.pageContext.localImage.publicURL}
+                brand={props.pageContext.brand}
+                driverName={props.pageContext.driver.name}
+                truckRegistration={props.pageContext.registration}
+                tyreCondition={props.pageContext.condition}
             />
-
         </Layout>
     )
 }

@@ -14,10 +14,11 @@ const IndexPage = props => {
       <Seo title="Home" />
       {props.data.allTruck.edges.map(edge => (
         <TruckItem 
-        driverName={edge.node.driver.name}
-        truckRegistration={edge.node.registration}
-        tyreCondition={edge.node.condition}
-        key={edge.node.id}>
+          truckImage={edge.node.localImage.publicURL}
+          driverName={edge.node.driver.name}
+          truckRegistration={edge.node.registration}
+          tyreCondition={edge.node.condition}
+          key={edge.node.id}>
         <Link to={`/truck/${edge.node.id}`}>Details</Link>
         </TruckItem>
       ))}
@@ -34,6 +35,9 @@ export const query = graphql`
           condition
           registration
           id
+          localImage {
+            publicURL
+          }
           driver {
             name
           }

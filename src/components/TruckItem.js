@@ -1,9 +1,12 @@
 import React from 'react'
 import styled from "styled-components"
 
-const TruckItem = ({brand, driverName, truckRegistration, tyreCondition, children}) => {
+const TruckItem = ({brand, driverName, truckImage, truckRegistration, tyreCondition, children}) => {
     return (
         <TruckItemWrapper>
+            <TruckImage>
+                <img src={truckImage} alt="Truck Image" />
+            </TruckImage>
             <h2>{truckRegistration}</h2>
             <span>{tyreCondition}</span>
             {/* <span>{brand}</span> */}
@@ -46,5 +49,13 @@ const TruckItemWrapper = styled.section `
         }
     }
 `
+
+const TruckImage = styled.div`
+    max-width:200px;
+`;
+
+const TruckContent = styled.div`
+
+`;
 
 export default TruckItem
