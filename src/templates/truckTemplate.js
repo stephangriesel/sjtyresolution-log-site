@@ -9,12 +9,16 @@ const truckTemplate = (props) => {
     return (
         <Layout>
             <TruckItem
-                truckImage={props.pageContext.localImage.childImageSharp.fixed}
-                brand={props.pageContext.brand}
-                driverName={props.pageContext.driver.name}
-                truckRegistration={props.pageContext.registration}
-                tyreCondition={props.pageContext.condition}
+                truckImage={props.data.truck.localImage.childImageSharp.fixed}
+                brand={props.data.truck.brand}
+                driverName={props.data.truck.driver.name}
+                odo={props.data.truck.odo}
+                truckRegistration={props.data.truck.registration}
+                tyreCondition={props.data.truck.condition}
             />
+            <div>
+
+            </div>
         </Layout>
     )
 }
@@ -22,7 +26,21 @@ const truckTemplate = (props) => {
 export const query = graphql`
     query TruckQuery($truckId: String!) {
         truck(id:{eq:$truckId}){
+            brand
+            condition
             registration
+            id
+            odo
+            localImage {
+              childImageSharp {
+                fixed(width:200){
+                  ...GatsbyImageSharpFixed
+                }
+              } 
+            }
+            driver {
+              name
+            }
         }
     }
 `;

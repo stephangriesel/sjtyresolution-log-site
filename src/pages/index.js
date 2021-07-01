@@ -18,6 +18,7 @@ const IndexPage = props => {
           driverName={edge.node.driver.name}
           truckRegistration={edge.node.registration}
           tyreCondition={edge.node.condition}
+          odo={edge.node.odo}
           key={edge.node.id}>
         <Link to={`/truck/${edge.node.id}`}>Details</Link>
         </TruckItem>
@@ -33,6 +34,7 @@ export const query = graphql`
         node {
           brand
           condition
+          odo
           registration
           id
           localImage {

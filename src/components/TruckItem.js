@@ -3,7 +3,7 @@ import styled from "styled-components"
 
 import Img from 'gatsby-image'
 
-const TruckItem = ({brand, driverName, truckImage, truckRegistration, tyreCondition, children}) => {
+const TruckItem = ({brand, driverName, truckImage, truckRegistration, tyreCondition, children, odo}) => {
     return (
         <TruckItemWrapper>
             <TruckImage>
@@ -11,8 +11,8 @@ const TruckItem = ({brand, driverName, truckImage, truckRegistration, tyreCondit
             </TruckImage>
             <TruckContent>
                 <h2>{truckRegistration}</h2>
-                <span>{tyreCondition}</span>
-                {/* <span>{brand}</span> */}
+                <div>Odometer: {odo}</div>
+                <div>Tyre Condition: {tyreCondition}</div>
                 <div className="btn">
                     {children}
                 </div>
@@ -35,6 +35,7 @@ const TruckItemWrapper = styled.section `
     }
     .btn {
         padding:0.5em;
+        margin:0.5em;
         background:transparent;
         transition: ease-in 0.5s;
         border: 1px solid #000;
@@ -59,6 +60,16 @@ const TruckImage = styled.div`
 `;
 
 const TruckContent = styled.div`
+    display:flex;
+    flex-direction:column;
+    text-align:center;
+    font-family:arial;
+    .small {
+        font-size:0.8em;
+    }
+    p {
+        margin:0;
+    }
 
 `;
 
