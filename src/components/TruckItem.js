@@ -5,14 +5,16 @@ const TruckItem = ({brand, driverName, truckImage, truckRegistration, tyreCondit
     return (
         <TruckItemWrapper>
             <TruckImage>
-                <img src={truckImage} alt="Truck Image" />
+                <img src={truckImage} alt="Truck" />
             </TruckImage>
-            <h2>{truckRegistration}</h2>
-            <span>{tyreCondition}</span>
-            {/* <span>{brand}</span> */}
-            <div className="btn">
-                {children}
-            </div>
+            <TruckContent>
+                <h2>{truckRegistration}</h2>
+                <span>{tyreCondition}</span>
+                {/* <span>{brand}</span> */}
+                <div className="btn">
+                    {children}
+                </div>
+            </TruckContent>
         </TruckItemWrapper>
     )
 }
