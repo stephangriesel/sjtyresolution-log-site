@@ -8,31 +8,7 @@ exports.createPages = ({graphql,actions}) => {
         allTruck {
           edges {
             node {
-              brand
-              comments
-              condition
-              date
-              datesignoff
-              driversignoff
-              endtime
-              odo
-              pressure
-              registration
-              replacement
-              starttime
-              techniciansignoff
-              thread
-              threadpattern
-              torquewheelnuts
-              trackingno
-              tyremovementinorder
               id
-              localImage {
-                publicURL
-              }
-              driver {
-                name
-              }
             }
           }
         }
@@ -46,7 +22,7 @@ exports.createPages = ({graphql,actions}) => {
             createPage({
                 path:`/truck/${truck.node.id}`,
                 component:truckTemplate,
-                context:truck.node
+                context:{truckId: truck.node.id}
             })
         })
     })

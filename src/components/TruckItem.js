@@ -1,11 +1,13 @@
 import React from 'react'
 import styled from "styled-components"
 
+import Img from 'gatsby-image'
+
 const TruckItem = ({brand, driverName, truckImage, truckRegistration, tyreCondition, children}) => {
     return (
         <TruckItemWrapper>
             <TruckImage>
-                <img src={truckImage} alt="Truck" />
+                <Img fixed={truckImage}/>
             </TruckImage>
             <TruckContent>
                 <h2>{truckRegistration}</h2>

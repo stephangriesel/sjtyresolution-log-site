@@ -14,7 +14,7 @@ const IndexPage = props => {
       <Seo title="Home" />
       {props.data.allTruck.edges.map(edge => (
         <TruckItem 
-          truckImage={edge.node.localImage.publicURL}
+          truckImage={edge.node.localImage.childImageSharp.fixed}
           driverName={edge.node.driver.name}
           truckRegistration={edge.node.registration}
           tyreCondition={edge.node.condition}
@@ -36,7 +36,11 @@ export const query = graphql`
           registration
           id
           localImage {
-            publicURL
+            childImageSharp {
+              fixed(width:200){
+                ...GatsbyImageSharpFixed
+              }
+            } 
           }
           driver {
             name
