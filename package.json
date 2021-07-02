@@ -5,6 +5,8 @@
   "version": "0.1.0",
   "author": "Kyle Mathews <mathews.kyle@gmail.com>",
   "dependencies": {
+    "axios": "^0.21.1",
+    "firebase": "^8.7.0",
     "gatsby": "^3.6.2",
     "gatsby-firesource": "^2.0.3",
     "gatsby-image": "^3.8.0",
