@@ -1,14 +1,18 @@
 import React, {useState} from "react"
 import { Link } from "gatsby"
 
+import { useAuth } from "../components/Firebase"
+
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 
-const SecondPage = () => {
+const Login = () => {
     const [formValues, setFormValues] = useState({email: '', password: ''});
+    const {firebase} = useAuth();
 
     function handleSubmit(e){
-        e.preventDeafult();
+        e.preventDefault();
+        firebase.login({email:formValues.email, password: formValues.password })
     }
     
     function handleInputChange(e){
@@ -29,4 +33,4 @@ const SecondPage = () => {
     </Layout>
     )}
 
-export default SecondPage
+export default Login
