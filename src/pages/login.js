@@ -1,8 +1,6 @@
 import React, {useState} from "react"
 import { Link } from "gatsby"
-
 import { useAuth } from "../components/Firebase"
-
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 
