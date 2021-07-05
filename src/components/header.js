@@ -1,10 +1,19 @@
-import * as React from "react"
+import React, {useContext} from "react"
 import PropTypes from "prop-types"
-import { Link } from "gatsby"
+import { Link, navigate } from "gatsby"
 import logo from '../images/logo.png'
 import { FirebaseContext } from "./Firebase"
 
-const Header = ({ siteTitle }) => (
+import styled from "styled-components"
+
+const Header = ({ siteTitle }) => {
+  const {firebase, user} = useContext(FirebaseContext);
+  console.log("Firebase Context Data: ", firebase, user)
+
+  function handleLogoutClick(){
+    firebase.logout().then(() => navigate('/login'))
+  }
+  return(
   <header
     style={{
       background: `white`,
@@ -42,17 +51,28 @@ const Header = ({ siteTitle }) => (
           {siteTitle}
         </Link>
       </h1>
-      <FirebaseContext.Consumer>
-        {
-          props => {
-            console.log("FirebaseContext Props", props)
-            return <div/>
-          }
+      <div>
+        {!!user && !!user.email &&
+        <div>
+          Hi, {user.email}
+          <div>
+            <LogOutLink onClick={handleLogoutClick}>
+              Logout
+            </LogOutLink>
+          </div>
+        </div>
         }
-      </FirebaseContext.Consumer>
+        {(!user || !user.email) && 
+          <div>
+            <Link to="/login">
+              Login
+            </Link>
+          </div>
+        }
+      </div>
     </div>
   </header>
-)
+  )}
 
 Header.propTypes = {
   siteTitle: PropTypes.string,
@@ -61,5 +81,12 @@ Header.propTypes = {
 Header.defaultProps = {
   siteTitle: ``,
 }
+
+const LogOutLink = styled.span`
+&:hover {
+  text-decoration:underline;
+  cursor:pointer;
+}
+`
 
 export default Header
