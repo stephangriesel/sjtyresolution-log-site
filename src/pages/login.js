@@ -2,6 +2,9 @@ import React, {useState, useContext} from "react"
 import { Link } from "gatsby"
 import { FirebaseContext } from "../components/Firebase"
 import Seo from "../components/seo"
+import {Form} from '../components/common/Form'
+import {Input} from '../components/common/Input'
+import {Button} from '../components/common/Button'
 
 const Login = () => {
     const [formValues, setFormValues] = useState({email: '', password: ''});
@@ -22,11 +25,11 @@ const Login = () => {
 
     return(
     <section>
-        <form onSubmit={handleSubmit}>
-            <input value={formValues.email} name="email" onChange={handleInputChange} placeholder="email" type="email"></input>
-            <input value={formValues.password} name="password" onChange={handleInputChange} placeholder="password" type="password"></input>
-            <button type="submit">Login</button>
-        </form>
+        <Form onSubmit={handleSubmit}>
+            <Input value={formValues.email} name="email" onChange={handleInputChange} placeholder="email" type="email"></Input>
+            <Input value={formValues.password} name="password" onChange={handleInputChange} placeholder="password" type="password"></Input>
+            <Button type="submit" block>Login</Button>
+        </Form>
     </section>
     )}
 

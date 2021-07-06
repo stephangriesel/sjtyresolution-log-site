@@ -48,7 +48,7 @@ const Header = ({ siteTitle }) => {
             fontFamily: `arial`
           }}
         >
-          {siteTitle}
+          {/* {siteTitle} */}
         </Link>
       </h1>
       <div>
@@ -63,7 +63,7 @@ const Header = ({ siteTitle }) => {
         </div>
         }
         {(!user || !user.email) && 
-          <div>
+          <div style={{fontFamily:`arial`}}>
             <Link to="/login">
               Login
             </Link>
