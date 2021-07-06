@@ -10,7 +10,7 @@ import TruckItem from '../components/TruckItem'
 const IndexPage = props => {
   console.log("test data", props)
   return (
-    <Layout>
+    <section>
       <Seo title="Home" />
       {props.data.allTruck.edges.map(edge => (
         <TruckItem 
@@ -23,7 +23,7 @@ const IndexPage = props => {
         <Link to={`/truck/${edge.node.id}`}>Details</Link>
         </TruckItem>
       ))}
-    </Layout>
+    </section>
   )
 }
 

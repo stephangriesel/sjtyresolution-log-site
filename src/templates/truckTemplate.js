@@ -7,7 +7,7 @@ import { graphql } from 'gatsby'
 const truckTemplate = (props) => {
     console.log("Template data",props.data)
     return (
-        <Layout>
+        <section>
             <TruckItem
                 truckImage={props.data.truck.localImage.childImageSharp.fixed}
                 brand={props.data.truck.brand}
@@ -19,7 +19,7 @@ const truckTemplate = (props) => {
             <div>
 
             </div>
-        </Layout>
+        </section>
     )
 }
 
