@@ -67,6 +67,10 @@ const Header = ({ siteTitle }) => {
             <Link to="/login">
               Login
             </Link>
+            <Divider />
+            <Link to="/register">
+              Register
+            </Link>
           </div>
         }
       </div>
@@ -87,6 +91,12 @@ const LogOutLink = styled.span`
   text-decoration:underline;
   cursor:pointer;
 }
+`
+
+const Divider = styled.span`
+margin: 0 8px;
+padding-right:1px;
+background:#DDDDDD;
 `
 
 export default Header
