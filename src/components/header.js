@@ -8,7 +8,7 @@ import styled from "styled-components"
 
 const Header = ({ siteTitle }) => {
   const {firebase, user} = useContext(FirebaseContext);
-  console.log("Firebase Context Data: ", firebase, user)
+  console.log("Firebase Context Data: ", user)
 
   function handleLogoutClick(){
     firebase.logout().then(() => navigate('/login'))
@@ -54,7 +54,7 @@ const Header = ({ siteTitle }) => {
       <div>
         {!!user && !!user.email &&
         <div>
-          Hi, {user.email}
+          Hi, {user.username || user.email}
           <div>
             <LogOutLink onClick={handleLogoutClick}>
               Logout
