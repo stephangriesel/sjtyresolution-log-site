@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import styled from 'styled-components';
 import {Button} from './Button';
 import {Input} from './Input';
+import moment from 'moment'
 
 export const TruckDetailsAndComments = ({firebase, truckId}) => {
 
@@ -57,7 +58,7 @@ export const TruckDetailsAndComments = ({firebase, truckId}) => {
       {comments.map(comment => (
         <DetailsAndCommentsItem key={comment.id}>
           <strong>
-            {comment.username}
+            {comment.username} - {moment(comment.dateCreated.toDate()).format('HH:mm Do MMM YYYY')}
           </strong>
           <div>
             {comment.text}

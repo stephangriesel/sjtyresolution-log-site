@@ -38,7 +38,10 @@ class Firebase {
 
     subscribeToTruckDetailsAndComments({truckId, onSnapshot}){
         const truckRef = this.db.collection('trucks').doc(truckId);
-        return this.db.collection('detailsAndComments').where('truck', '==', truckRef).onSnapshot(onSnapshot)
+        return this.db.collection('detailsAndComments')
+        .where('truck', '==', truckRef)
+        .orderBy('dateCreated', 'desc')
+        .onSnapshot(onSnapshot)
     }
 
     async login({ email, password }) {
