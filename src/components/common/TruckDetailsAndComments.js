@@ -1,4 +1,7 @@
 import React, {useEffect, useState} from 'react';
+import styled from 'styled-components';
+import {Button} from './Button';
+import {Input} from './Input';
 
 export const TruckDetailsAndComments = ({firebase, truckId}) => {
 
@@ -29,17 +32,54 @@ export const TruckDetailsAndComments = ({firebase, truckId}) => {
   console.log("Comment data", comments);
   return(
     <div>
+      <CommentForm>
+        <Input />
+        <Button>
+          Add Comment
+        </Button>
+      </CommentForm>
       {comments.map(comment => (
-        <div>
-          <div key={comment.id}>
+        <DetailsAndCommentsItem key={comment.id}>
+          <strong>
             {comment.username}
-          </div>
+          </strong>
           <div>
             {comment.text}
           </div>
-        </div>      
+        </DetailsAndCommentsItem>      
       ))}
       
     </div>
   )
 }
+
+const DetailsAndCommentsItem = styled.div`
+border-bottom:1px solid #999999;
+padding: 0.5em; 0;
+
+strong {
+  color:#989898;
+}
+`
+
+const CommentForm = styled.form`
+display:flex;
+margin-top:2em;
+
+${Input}{
+  margin-right:0.8em;
+  margin-top:auto;
+  margin-bottom:auto;
+  font-size:1em;
+  padding:0.5em;
+  background:#FFF;
+  color:#999;
+  border:1px solid #999;
+}
+
+${Button}{
+  margin:auto 0;
+}
+
+
+`
