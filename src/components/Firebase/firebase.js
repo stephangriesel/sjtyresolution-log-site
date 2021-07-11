@@ -28,6 +28,14 @@ class Firebase {
         })
     }
 
+    async postComment({text,truckId}){
+        const postCommentCallable = this.functions.httpsCallable('postComment'); // this postComment refers to postComment in function, not the method postComment one line up
+        return postCommentCallable({
+            text,
+            truckId
+        })
+    }
+
     subscribeToTruckDetailsAndComments({truckId, onSnapshot}){
         const truckRef = this.db.collection('trucks').doc(truckId);
         return this.db.collection('detailsAndComments').where('truck', '==', truckRef).onSnapshot(onSnapshot)

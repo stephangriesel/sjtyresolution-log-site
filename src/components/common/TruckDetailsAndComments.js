@@ -6,6 +6,8 @@ import {Input} from './Input';
 export const TruckDetailsAndComments = ({firebase, truckId}) => {
 
   const [comments, setComments] = useState([]);
+  const [commentText, setCommentText] = useState('');
+
 
   useEffect(() => {
     const unsubscribe = firebase.subscribeToTruckDetailsAndComments({
@@ -28,13 +30,27 @@ export const TruckDetailsAndComments = ({firebase, truckId}) => {
       }
     }
   },[])
-
   console.log("Comment data", comments);
+
+  function handlePostCommentSubmit(e){
+    e.preventDefault();
+    console.log("Comment Text Data: ", commentText);
+    firebase.postComment({
+      text: commentText,
+      truckId
+    })
+  }
+
   return(
     <div>
-      <CommentForm>
-        <Input />
-        <Button>
+      <CommentForm
+        onSubmit={handlePostCommentSubmit}
+      >
+        <Input value={commentText} onChange={e => {
+          e.persist();
+          setCommentText(e.target.value);
+        } }/>
+        <Button type="submit">
           Add Comment
         </Button>
       </CommentForm>
