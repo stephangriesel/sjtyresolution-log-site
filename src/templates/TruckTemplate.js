@@ -1,10 +1,13 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { TruckDetailsAndComments } from '../components/common'
 import TruckItem from '../components/TruckItem'
+import {FirebaseContext} from '../components/Firebase'
 import { graphql } from 'gatsby'
 
-const truckTemplate = (props) => {
+const TruckTemplate = (props) => {
     console.log("Template data: ",props.data)
+    // console.log("Firebase Context data: ", )
+    const {firebase} = useContext(FirebaseContext)
     return (
         <section>
             <TruckItem
@@ -15,9 +18,12 @@ const truckTemplate = (props) => {
                 truckRegistration={props.data.truck.registration}
                 tyreCondition={props.data.truck.condition}
             />
+            {!!firebase && 
             <TruckDetailsAndComments 
-                brand={props.data.truck.brand}
+                firebase={firebase}
+                truckId={props.data.truck.id}
             />
+          }
         </section>
     )
 }
@@ -44,4 +50,4 @@ export const query = graphql`
     }
 `;
 
-export default truckTemplate;
+export default TruckTemplate;

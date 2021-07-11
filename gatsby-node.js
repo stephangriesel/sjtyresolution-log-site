@@ -18,7 +18,7 @@ exports.onCreateWebpackConfig = ({ actions, stage }) => {
 
 exports.createPages = ({graphql,actions}) => {
     const {createPage} = actions;
-    const truckTemplate = path.resolve('src/templates/truckTemplate.js')
+    const TruckTemplate = path.resolve('src/templates/TruckTemplate.js')
     return graphql(`
     {
         allTruck {
@@ -37,7 +37,7 @@ exports.createPages = ({graphql,actions}) => {
         result.data.allTruck.edges.forEach(truck => {
             createPage({
                 path:`/truck/${truck.node.id}`,
-                component:truckTemplate,
+                component:TruckTemplate,
                 context:{truckId: truck.node.id}
             })
         })
