@@ -28,6 +28,11 @@ class Firebase {
         })
     }
 
+    async subscribeToTruckComments({truckId}){
+        const truckRef = this.db.collection('trucks').doc(truckId);
+        return this.db.collection('comments').where('truck', '==', truckRef)
+    }
+
     async login({ email, password }) {
         return await this.auth.signInWithEmailAndPassword(email, password);
     }

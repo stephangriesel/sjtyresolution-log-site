@@ -1,11 +1,10 @@
 import React from 'react'
-import Layout from "../components/layout"
-import styled from 'styled-components'
+import { TruckDetailsAndComments } from '../components/common'
 import TruckItem from '../components/TruckItem'
 import { graphql } from 'gatsby'
 
 const truckTemplate = (props) => {
-    console.log("Template data",props.data)
+    console.log("Template data: ",props.data)
     return (
         <section>
             <TruckItem
@@ -16,9 +15,9 @@ const truckTemplate = (props) => {
                 truckRegistration={props.data.truck.registration}
                 tyreCondition={props.data.truck.condition}
             />
-            <div>
-
-            </div>
+            <TruckDetailsAndComments 
+                brand={props.data.truck.brand}
+            />
         </section>
     )
 }
