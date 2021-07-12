@@ -38,7 +38,7 @@ const TruckItemWrapper = styled.section `
         margin:0.5em;
         background:transparent;
         transition: ease-in 0.5s;
-        border: 1px solid #000;
+        border: 0px solid #000;
         a {
             background:transparent;
             color:#000;
