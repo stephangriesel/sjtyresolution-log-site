@@ -27,7 +27,7 @@ const TruckItemWrapper = styled.section `
     align-items:center;
     justify-content:space-evenly;
     border:1px solid black;
-    background:#ECEFE9;
+    background:#f5f5f5;
     margin:0.5em 0;
     h2 {
         margin:0.5em 0;
