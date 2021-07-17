@@ -17,8 +17,11 @@ class Firebase {
         }
     }
 
-    async getUserProfile({userId}){
-        return this.db.collection('publicProfiles').where('userId', '==', userId).get();
+    getUserProfile({userId, onSnapshot}){
+        return this.db.collection('publicProfiles')
+        .where('userId', '==', userId)
+        .limit(1)
+        .onSnapshot(onSnapshot)
     }
 
     async register({email,password, username}) {
