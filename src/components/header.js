@@ -53,9 +53,21 @@ const Header = ({ siteTitle }) => {
       </h1>
       <div>
         {!!user && !!user.email &&
-        <div>
+        <div style={{ textAlign: `right`}}>
           Hi, {user.username || user.email}
           <div>
+            {!!user.isAdmin && 
+            <>
+              <Link to="/add-driver">
+                Add Driver
+              </Link>
+              <Divider />
+              <Link to="/add-truck">
+                Add Truck
+              </Link>
+              <Divider />
+            </>
+            }
             <LogOutLink onClick={handleLogoutClick}>
               Logout
             </LogOutLink>
