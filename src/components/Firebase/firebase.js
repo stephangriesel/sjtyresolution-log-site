@@ -24,6 +24,13 @@ class Firebase {
         .onSnapshot(onSnapshot)
     }
 
+    async createDriver({driverName}){
+        const createDriverCallable = this.functions.httpsCallable('createDriver');
+        return createDriverCallable({
+            driverName
+        })
+    }
+
     async register({email,password, username}) {
         await this.auth.createUserWithEmailAndPassword(email,password);
         const createPublicCallable = this.functions.httpsCallable('createPublicProfile')
