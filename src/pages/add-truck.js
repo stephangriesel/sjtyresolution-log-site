@@ -1,7 +1,7 @@
 import React, { useEffect, useContext, useState} from 'react';
 import { FirebaseContext } from '../components/Firebase';
 import {Form, Input, Button} from '../components/common';
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 const fileReader = new FileReader();
 
@@ -15,6 +15,14 @@ const AddTruck = () => {
     const [odo, setOdo] = useState('');
     const [success, setSuccess] = useState(false);
 
+    let isMounted = true;
+
+    useEffect(() => {
+        return () => {
+            isMounted = false;
+        }
+    }, [])
+
     useEffect(() => {
         fileReader.addEventListener('load', () => {
             setTruckImage(fileReader.result)
@@ -26,6 +34,7 @@ const AddTruck = () => {
         // query all available drivers
             if(firebase){
             firebase.getDrivers().then(snapshot => {
+                if(isMounted){
                 console.log("Add Truck Snapshot: ", snapshot)
                 const availableDrivers = [];
                 snapshot.forEach(doc => {
@@ -37,6 +46,7 @@ const AddTruck = () => {
 
                 setDriverId(availableDrivers[0].id);
                 setDrivers(availableDrivers);
+            }
             })
         }
     }, [firebase])
@@ -55,7 +65,9 @@ const AddTruck = () => {
                 condition,
                 odo
             }).then(() => {
+                if(isMounted){
                 setSuccess(true)
+                }
             })
         }}>
             <FormField>

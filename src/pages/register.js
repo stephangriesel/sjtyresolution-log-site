@@ -1,4 +1,4 @@
-import React, {useState, useContext} from 'react'
+import React, {useState, useContext, useEffect} from 'react'
 import {Form, Input, Button, ErrorMessage} from '../components/common'
 import {FirebaseContext} from '../components/Firebase'
 
@@ -10,7 +10,15 @@ const Register = () => {
     password:'',
     confirmPassword:'',
     username:''
-  })
+  });
+
+  let isMounted = true;
+
+  useEffect(() => {
+      return () => {
+          isMounted = false;
+      }
+  }, [])
 
   function handeInputChange(e){
     e.persist();
@@ -29,7 +37,9 @@ const Register = () => {
         email: formValues.email,
         password: formValues.password
       }).catch(error => {
+        if(isMounted){
         setErrorMessage(error.message);
+        }
       })
     } else {
       setErrorMessage('Password fields not matching, try again!')

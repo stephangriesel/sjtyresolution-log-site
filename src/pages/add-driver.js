@@ -1,4 +1,4 @@
-import React, {useState, useContext} from 'react';
+import React, {useState, useContext, useEffect} from 'react';
 import {Form, Input, Button} from '../components/common';
 import { FirebaseContext } from '../components/Firebase';
 
@@ -7,13 +7,23 @@ const AddDriver = () => {
     const [driverName, setDriverName] = useState('');
     const [success, setSuccess] = useState(false);
 
+    let isMounted = true;
+
+    useEffect(() => {
+        return () => {
+            isMounted = false;
+        }
+    }, [])
+
     function handleSubmit(e){
         e.preventDefault();
         firebase.createDriver({
             driverName
         }).then(() => {
+            if(isMounted){
             setDriverName(' ');
             setSuccess(true);
+            }
         })
     }
     return (
