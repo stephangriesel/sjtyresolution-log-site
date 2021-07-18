@@ -31,6 +31,8 @@ const AddTruck = () => {
                         ...doc.data()
                     })
                 })
+
+                setDriverId(availableDrivers[0].id);
                 setDrivers(availableDrivers);
             })
         }
