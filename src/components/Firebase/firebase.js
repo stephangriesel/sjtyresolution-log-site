@@ -35,6 +35,15 @@ class Firebase {
         return this.db.collection('drivers').get();
     }
 
+    async createTruck({truckRegistration, driverId, truckImage}){
+        const createTruckCallable = this.functions.httpsCallable('createTruck');
+        return createTruckCallable({
+            truckRegistration,
+            driverId,
+            truckImage
+        })
+    }
+
     async register({email,password, username}) {
         await this.auth.createUserWithEmailAndPassword(email,password);
         const createPublicCallable = this.functions.httpsCallable('createPublicProfile')
