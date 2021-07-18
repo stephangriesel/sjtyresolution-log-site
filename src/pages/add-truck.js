@@ -45,6 +45,11 @@ const AddTruck = () => {
             console.log("Truck Image: ", truckImage);
             console.log("Truck Registration: ", truckRegistration);
             console.log("Truck Driver: ", driverId);
+            firebase.createTruck({
+                truckImage,
+                truckRegistration,
+                driverId
+            })
         }}>
             <FormField>
                 <Input 
