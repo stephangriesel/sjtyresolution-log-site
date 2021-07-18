@@ -35,12 +35,14 @@ class Firebase {
         return this.db.collection('drivers').get();
     }
 
-    async createTruck({truckRegistration, driverId, truckImage}){
+    async createTruck({truckRegistration, driverId, truckImage, condition, odo}){
         const createTruckCallable = this.functions.httpsCallable('createTruck');
         return createTruckCallable({
             truckRegistration,
             driverId,
-            truckImage
+            truckImage,
+            condition,
+            odo
         })
     }
 

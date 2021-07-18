@@ -11,6 +11,9 @@ const AddTruck = () => {
     const [truckImage, setTruckImage] = useState('');
     const [truckRegistration, setTruckRegistration] = useState('');
     const [driverId, setDriverId] = useState('');
+    const [condition, setCondition] = useState('');
+    const [odo, setOdo] = useState('');
+    const [success, setSuccess] = useState(false);
 
     useEffect(() => {
         fileReader.addEventListener('load', () => {
@@ -48,7 +51,11 @@ const AddTruck = () => {
             firebase.createTruck({
                 truckImage,
                 truckRegistration,
-                driverId
+                driverId,
+                condition,
+                odo
+            }).then(() => {
+                setSuccess(true)
             })
         }}>
             <FormField>
@@ -57,6 +64,7 @@ const AddTruck = () => {
                     value={truckRegistration}
                     onChange={e => {
                         e.persist();
+                        setSuccess(false);
                         setTruckRegistration(e.target.value)
                     }}
                 />
@@ -68,6 +76,7 @@ const AddTruck = () => {
                     value={driverId}
                     onChange={e => {
                         e.persist();
+                        setSuccess(false);
                         setDriverId(e.target.value)
                     }}
                 >
@@ -83,9 +92,41 @@ const AddTruck = () => {
                 <strong>Truck Image</strong>
                 <Input type="file" onChange={e => {
                     e.persist();
+                    setSuccess(false);
                     fileReader.readAsDataURL(e.target.files[0])
                 }}/>
             </FormField>
+            <FormField>
+                <strong>
+                    Condition
+                </strong>
+                <Input 
+                    placeholder="Condition" 
+                    value={condition} 
+                    onChange={e => {
+                        e.persist();
+                        setSuccess(false);
+                        setCondition(e.target.value);
+                    }} />
+            </FormField>
+            <FormField>
+                <strong>
+                    Odometer
+                </strong>
+                <Input 
+                    placeholder="Odometer" 
+                    value={odo} 
+                    onChange={e => {
+                        e.persist();
+                        setSuccess(false);
+                        setOdo(e.target.value);
+                    }} />
+            </FormField>
+            {!!success && 
+            <span>
+                New truck added successfully!
+            </span>
+            }
             <Button block type="submit">
                 Add new truck
             </Button>
