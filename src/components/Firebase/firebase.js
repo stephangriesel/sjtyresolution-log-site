@@ -31,6 +31,10 @@ class Firebase {
         })
     }
 
+    async getDrivers(){
+        return this.db.collection('drivers').get();
+    }
+
     async register({email,password, username}) {
         await this.auth.createUserWithEmailAndPassword(email,password);
         const createPublicCallable = this.functions.httpsCallable('createPublicProfile')
