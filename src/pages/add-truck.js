@@ -3,7 +3,10 @@ import { FirebaseContext } from '../components/Firebase';
 import {Form, Input, Button} from '../components/common';
 import styled from 'styled-components';
 
-const fileReader = new FileReader();
+let fileReader
+if(typeof window !== 'undefined'){
+    fileReader = new FileReader();
+}
 
 const AddTruck = () => {
     const {firebase} = useContext(FirebaseContext);
