@@ -20,7 +20,7 @@ exports.createPages = ({graphql,actions}) => {
     const {createPage} = actions;
     const TruckTemplate = path.resolve('src/templates/TruckTemplate.js')
     return graphql(`
-    {
+    query TruckQuery {
         allTruck {
           edges {
             node {
