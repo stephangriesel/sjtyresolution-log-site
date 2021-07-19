@@ -16,6 +16,7 @@ const AddTruck = () => {
     const [driverId, setDriverId] = useState('');
     const [condition, setCondition] = useState('');
     const [odo, setOdo] = useState('');
+    const [pressure, setPressure] = useState('');
     const [success, setSuccess] = useState(false);
 
     let isMounted = true;
@@ -66,7 +67,8 @@ const AddTruck = () => {
                 truckRegistration,
                 driverId,
                 condition,
-                odo
+                odo,
+                pressure
             }).then(() => {
                 if(isMounted){
                 setSuccess(true)
@@ -122,6 +124,19 @@ const AddTruck = () => {
                         e.persist();
                         setSuccess(false);
                         setCondition(e.target.value);
+                    }} />
+            </FormField>
+            <FormField>
+                <strong>
+                    Tyre Pressure
+                </strong>
+                <Input 
+                    placeholder="Tyre Pressure" 
+                    value={pressure} 
+                    onChange={e => {
+                        e.persist();
+                        setSuccess(false);
+                        setPressure(e.target.value);
                     }} />
             </FormField>
             <FormField>
